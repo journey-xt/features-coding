@@ -1,0 +1,11 @@
+{
+  "name": "coding",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "webpack --config ./config/webpack.dev.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
