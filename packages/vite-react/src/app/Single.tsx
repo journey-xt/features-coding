@@ -1,16 +1,18 @@
 import React, { useRef } from "react";
 
 class SingleClass {
+  // static 为静态属性  只有 原型上可以使用
   static instance: SingleClass | undefined;
 
-  name: string;
+  constructor() {
+    if (!SingleClass.instance) {
+      SingleClass.instance = this;
+    }
 
-  constructor(name = "单例模式") {
-    this.name = name;
-
-    throw new Error("该类只能重getInstance方法调用");
+    return SingleClass.instance;
   }
 
+  // static 为静态方法  只有 原型上可以使用
   static getInstance() {
     if (SingleClass.instance) {
       return SingleClass.instance;
@@ -20,20 +22,12 @@ class SingleClass {
 
     return SingleClass.instance;
   }
-
-  getvalue() {
-    return this.name;
-  }
 }
 
 const Single = () => {
   const instanceRef = useRef(SingleClass.getInstance());
 
   const instance1Ref = useRef(SingleClass.getInstance());
-
-  console.log(instanceRef.current.getvalue());
-
-  console.log(instance1Ref.current.getvalue());
 
   console.log(instanceRef.current === instance1Ref.current);
 
