@@ -3,12 +3,19 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
+  Routes,
   Route,
 } from "react-router-dom";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/single" Component={React.lazy(() => import("../Single"))} />
+    <Routes>
+      <Route path="/single" Component={React.lazy(() => import("../Single"))} />
+      <Route
+        path="/event-emit"
+        Component={React.lazy(() => import("../EventEmit"))}
+      />
+    </Routes>
   )
 );
 
